@@ -26,6 +26,31 @@ const getAllUniversities = async (req: Request, res: Response) => {
 		}
 	return UniversitiesData
 }
+const ListUniversities = async (req: Request, res: Response) => {
+	const dataPath = 'src/controllers/universities/university.json'
+	const UniversitiesData = readFileSync(dataPath, 'utf-8')
+	let universities = JSON.parse(UniversitiesData)
+	if (universities){
+	sendSuccessResponse(res, universities)
+		} else {
+			sendNotFoundResponse(res)
+			console.log('error')
+		}
+
+}
+const getUniversity = async (req: Request, res: Response) => {
+	const dataPath = 'src/controllers/universities/university.json'
+	const UniversitiesData = readFileSync(dataPath, 'utf-8')
+	let universities = JSON.parse(UniversitiesData)
+	const universityId = req.params['id']
+	if (universities[universityId]){
+	sendSuccessResponse(res, universities[universityId])
+		} else {
+			sendNotFoundResponse(res)
+		}
+
+}
+
 
 const AddUniversity = async (req: Request, res: Response) => {
 	try {
@@ -96,7 +121,6 @@ const DeleteUniversity = async (req: Request, res: Response) => {
 		const UniversitiesData = readFileSync(dataPath, 'utf-8')
 		let universities = JSON.parse(UniversitiesData)
 		const universityId = req.params['id']
-		//function filter exclude object with this id from array
 		universities.splice(universityId, 1)
 		saveUniversityData(universities, req, res)
 	} catch (error: any) {
@@ -107,4 +131,4 @@ const DeleteUniversity = async (req: Request, res: Response) => {
 		)
 	}
 }
-export { getAllUniversities, AddUniversity, UpdateUniversity, DeleteUniversity }
+export { getAllUniversities, getUniversity,AddUniversity, UpdateUniversity, DeleteUniversity,ListUniversities }
