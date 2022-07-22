@@ -8,17 +8,15 @@ import TextField from '@mui/material/TextField/TextField'
 import { IResponseInterface } from '../../config/interfaces/IResponse.interface'
 import api from '../../config/api'
 import { IUniversityInterface } from '../../config/interfaces/IUniversity.interface'
+import { ICountryInterface2 } from '../../config/interfaces/ICountry2.interface'
 const CreateUniversity = () => {
 	const [domains, setDomains] = useState<string[]>([])
 	const [web_pages, setWeb_pages] = useState<string>('')
 	const [name, setName] = useState<string>('')
 	const [alpha_two_code, setAlpha_two_code] = useState<string>('')
-	const [country, setCountry]  =useState<string[]>([])
+	const [country, setCountry] = useState<ICountryInterface2[]>([])
 	let [selected, setSelected] = useState<string[]>([])
 	const [universities, setUniversities] = useState<IUniversityInterface[]>()
-	// let options = country?.map(function (obj) {
-	// 	return obj.name;
-	//   })
 	const navigate = useNavigate()
 	const sendData = async function createPost(
 		e: React.FormEvent<HTMLFormElement>
@@ -27,21 +25,19 @@ const CreateUniversity = () => {
 		const country = ['pid1234']
 		const domains = ['f.edu.eg']
 
-let bodyFormData = new FormData();
-country.forEach((item) => {
-    bodyFormData.append('country[]', item);
-	
-});
-setCountry(country)
-domains.forEach((item) => {
-    bodyFormData.append('domains[]', item);
-	
-});
-setDomains(domains)
-bodyFormData.append('web_pages',web_pages)
-bodyFormData.append('name',name)
-bodyFormData.append('alpha_two_code',alpha_two_code)
-	
+		let bodyFormData = new FormData()
+		country.forEach((item) => {
+			bodyFormData.append('country[]', item)
+		})
+
+		domains.forEach((item) => {
+			bodyFormData.append('domains[]', item)
+		})
+
+		bodyFormData.append('web_pages', web_pages)
+		bodyFormData.append('name', name)
+		bodyFormData.append('alpha_two_code', alpha_two_code)
+
 		try {
 			const response: IResponseInterface<IUniversityInterface> =
 				await api<IUniversityInterface>({
@@ -52,7 +48,7 @@ bodyFormData.append('alpha_two_code',alpha_two_code)
 
 			if (response.success) {
 				if (response.data) {
-				console.log('hi response')
+					console.log('hi response')
 				}
 			}
 		} catch (error: any) {
@@ -60,28 +56,28 @@ bodyFormData.append('alpha_two_code',alpha_two_code)
 		}
 	}
 
-	// const getCountries = async () => {
-	// 	try {
-	// 		const response: IResponseInterface<ICountryInterface2[]> = await api<
-	// 			ICountryInterface2[]
-	// 		>({
-	// 			url: '/api/countries/',
-	// 		})
+	const getCountries = async () => {
+		try {
+			const response: IResponseInterface<ICountryInterface2[]> = await api<
+				ICountryInterface2[]
+			>({
+				url: '/api/countries/',
+			})
 
-	// 		if (response.success) {
-	// 			if (response.data) {
-	// 				setCountry(response.data)
-	// 				console.log(response.data)
-	// 			}
-	// 		}
-	// 	} catch (error: any) {
-	// 		console.log(error)
-	// 	}
-	// }
+			if (response.success) {
+				if (response.data) {
+					setCountry(response.data)
+					console.log(response.data)
+				}
+			}
+		} catch (error: any) {
+			console.log(error)
+		}
+	}
 
-	// useEffect(() => {
-	// 	getCountries()
-	// }, [])
+	useEffect(() => {
+		getCountries()
+	}, [])
 	return (
 		<div
 			className="container"
@@ -97,23 +93,6 @@ bodyFormData.append('alpha_two_code',alpha_two_code)
 						<CardContent>
 							<h2>Edit Basic Info</h2>
 							<div>
-								<div>
-									{/* <TextField
-										className="inputText"
-										variant="outlined"
-										required
-										fullWidth
-										id="domain"
-										label="domain"
-										value={domains}
-										size="small"
-										onChange={(e) => {
-											// setDomains(e.target.value)
-											setDomains(JSON.parse(e.target.value))
-										}}
-									/> */}
-								</div>
-								<br />
 								<div>
 									<TextField
 										className="inputText"
@@ -146,36 +125,6 @@ bodyFormData.append('alpha_two_code',alpha_two_code)
 									/>
 								</div>
 								<br />
-
-								<div>
-									
-									{/* <Select
-										// name={selected}
-										value={selected}
-										options={options}
-										onChange={(e:any)=>{setSelected(e);
-											// countries?.name=e?.label
-											setCountry(country)
-											console.log(e.label)
-											console.log(country)
-										}}
-									/> */}
-									{/* <TextField
-										className="inputText"
-										variant="outlined"
-										required
-										fullWidth
-										id="country"
-										label="country"
-										value={country}
-										size="small"
-										onChange={(e) => {
-											// setCountry(e.target.value)
-											setCountry(JSON.parse(e.target.value))
-										}}
-									/> */}
-								</div>
-								<br />
 								<div>
 									<TextField
 										className="inputText"
@@ -190,7 +139,6 @@ bodyFormData.append('alpha_two_code',alpha_two_code)
 											setWeb_pages(e.target.value)
 										}}
 									/>
-									
 								</div>
 								<br />
 							</div>

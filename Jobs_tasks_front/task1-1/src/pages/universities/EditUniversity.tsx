@@ -133,18 +133,6 @@ const EditUniversity = () => {
 								<br />
 
 								<div>
-									
-									{/* <Select
-										// name={selected}
-										value={selected}
-										options={options}
-										onChange={(e:any)=>{setSelected(e);
-											// countries?.name=e?.label
-											setCountry(country)
-											console.log(e.label)
-											console.log(country)
-										}}
-									/> */}
 									<TextField
 										className="inputText"
 										variant="outlined"
