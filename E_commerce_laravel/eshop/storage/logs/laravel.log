@@ -1,0 +1,28 @@
+[2023-01-04 08:39:02] local.ERROR: syntax error, unexpected '}', expecting variable (T_VARIABLE) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '}', expecting variable (T_VARIABLE) at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:39:09] local.ERROR: syntax error, unexpected '(', expecting variable (T_VARIABLE) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '(', expecting variable (T_VARIABLE) at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:39:16] local.ERROR: syntax error, unexpected '(', expecting ';' or ',' {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '(', expecting ';' or ',' at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:39:17] local.ERROR: syntax error, unexpected '(', expecting ';' or ',' {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '(', expecting ';' or ',' at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:39:43] local.ERROR: syntax error, unexpected '(', expecting ';' or ',' {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '(', expecting ';' or ',' at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:41:16] local.ERROR: syntax error, unexpected '}', expecting variable (T_VARIABLE) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '}', expecting variable (T_VARIABLE) at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2023-01-04 08:41:24] local.ERROR: syntax error, unexpected '$', expecting variable (T_VARIABLE) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '$', expecting variable (T_VARIABLE) at F:\\backup nagwa\\crud_node_js\\E_commerce_laravel\\eshop\\app\\Models\\Category.php:12)
+[stacktrace]
+#0 {main}
+"} 
