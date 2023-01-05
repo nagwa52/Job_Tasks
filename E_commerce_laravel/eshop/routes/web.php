@@ -36,5 +36,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     // });
     Route::get('/dashboard', [FrontendController::class,'index']);
     Route::get('/categories', [CategoryController::class,'index']);
-    Route::get('/categories/create', [CategoryController::class,'add']);
+    Route::get('/categories/create', [CategoryController::class,'create']);
+    Route::post('/categories', [CategoryController::class,'store']);
 });

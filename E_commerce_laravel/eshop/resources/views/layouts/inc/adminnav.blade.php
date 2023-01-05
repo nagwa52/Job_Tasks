@@ -7,7 +7,7 @@
           <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
           <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+        {{-- <h6 class="font-weight-bolder mb-0">Dashboard</h6> --}}
       </nav>
       <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -166,11 +166,11 @@
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="container-fluid py-4">
-    <div class="row">
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+ {{-- <div class="container-fluid py-4"> --}}
+    {{-- <div class="row">
+       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
-          <div class="card-header p-3 pt-2">
+           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
               <i class="material-icons opacity-10">weekend</i>
             </div>
@@ -184,8 +184,8 @@
             <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
           </div>
         </div>
-      </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      </div> --}}
+      {{-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
@@ -235,9 +235,9 @@
             <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row mt-4">
+      </div> --}}
+    {{-- </div> --}}
+    {{-- <div class="row mt-4">
       <div class="col-lg-4 col-md-6 mt-4 mb-4">
         <div class="card z-index-2 ">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
@@ -643,8 +643,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <footer class="footer py-4  ">
+    </div> --}}
+    {{-- <footer class="footer py-4  ">
       <div class="container-fluid">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6 mb-lg-0 mb-4">
@@ -675,6 +675,6 @@
           </div>
         </div>
       </div>
-    </footer>
-  </div>
-</main>
+    </footer> --}}
+  {{-- </div>
+</main> --}}
