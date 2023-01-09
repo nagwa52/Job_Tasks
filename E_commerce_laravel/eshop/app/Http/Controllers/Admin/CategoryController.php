@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.category.index');
+        $category = Category::all();
+        return view('admin.category.index',compact('category'));
     }
     public function create()
     {
@@ -23,18 +24,18 @@ class CategoryController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/category' . $filename);
+            $file->move('assets/uploads/category', $filename);
             $category->image = $filename;
         }
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
-        $category->description = $request->input('descrip');
+        $category->description = $request->input('description');
         $category->status = $request->input('status') == TRUE ? '1' : '0';
         $category->popular = $request->input('popular') == TRUE ? '1' : '0';;
         $category->meta_title = $request->input('meta_title');
         $category->meta_descrip = $request->input('meta_descrip');
         $category->meta_keywords = $request->input('meta_keywords');
         $category->save();
-        return redirect('/dashboard')->with('status','category created successfully');
+        return redirect('/dashboard')->with('status', 'category created successfully');
     }
 }
