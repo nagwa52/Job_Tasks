@@ -68,6 +68,18 @@ class CategoryController extends Controller
         $category->meta_descrip = $request->input('meta_descrip');
         $category->meta_keywords = $request->input('meta_keywords');
         $category->update();
-        return redirect('/dashboard')->with('status',"category updated successfully");
+        return redirect('/dashboard')->with('status', "category updated successfully");
+    }
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        if ($category->image) {
+            $path = 'assets/uploads/category' . $category->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+        }
+        $category->delete();
+        return redirect('/categories')->with('status', 'category deleted successfully');
     }
 }

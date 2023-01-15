@@ -24,14 +24,20 @@
                     <form role="form" action="{{ url('/categories') }}" class="text-start" method="POST"
                         autocomplete="on" enctype="multipart/form-data">
                         @csrf
-                        <label class="font-weight-bolder">Name </label>
-                        <div class="input-group input-group-outline">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="font-weight-bolder">Name </label>
+                                <div class="input-group input-group-outline">
+                                    <input type="text" class="form-control" name="name" placeholder="Name">
+                                </div>
                         </div>
-                        <label class="font-weight-bolder">Slug </label>
-                        <div class="input-group input-group-outline">
-                            <input type="text" class="form-control" name="slug">
+                        <div class="col-md-6">
+                            <label class="font-weight-bolder">Slug </label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" class="form-control" name="slug">
+                            </div>
                         </div>
+                    </div>
                         <label class="font-weight-bolder">Description </label>
                         <div class="input-group input-group-outline">
                             <textarea type="text" class="form-control" rows="3" name="description"></textarea>

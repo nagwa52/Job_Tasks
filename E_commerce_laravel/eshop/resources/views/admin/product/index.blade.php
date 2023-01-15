@@ -18,7 +18,7 @@
                 <div class="card my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                            <h6 class="text-white text-capitalize ps-3">Categories</h6>
+                            <h6 class="text-white text-capitalize ps-3">Products</h6>
                         </div>
                     </div>
                     <div class="card-body px-0 pb-30">
@@ -43,7 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($category as $item)
+                                    @foreach ($product as $item)
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
@@ -66,17 +66,17 @@
                                             </td>
                                             <td class="span3">
                                                 <div>
-                                                    <img src="{{ asset('assets/uploads/category/' . $item->image) }}"
-                                                        class="cate-image" alt="category">
+                                                    <img src="{{ asset('assets/uploads/product/' . $item->image) }}"
+                                                        class="cate-image" alt="product">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-sm-between px-2 py-1">
                                                 
-                                                  <a href="{{url('categories/' .$item->id.'/show') }}" >
+                                                  <a href="{{url('products/' .$item->id.'/show') }}" >
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                   </a>
-                                                  <a href="{{url('categories/' .$item->id.'/edit') }}" >
+                                                  <a href="{{url('products/' .$item->id) }}" >
                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                                   </a>
                                                   <a href="{{url('categories/' .$item->id) }}" >
