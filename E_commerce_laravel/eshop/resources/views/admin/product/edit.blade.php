@@ -26,10 +26,10 @@
                         @csrf
                         @method('PUT')
                         <select class="form-select input-group-outline" name="cat_id" aria-label="Default select example">
-                            <option selected>{{ $product->name }}</option>
-                            @foreach ($category as $item)
+                            <option selected>{{ $product->category->name }}</option>
+                            {{-- @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -47,7 +47,7 @@
                         </div>
                         <label class="font-weight-bolder">Description </label>
                         <div class="input-group input-group-outline">
-                            <textarea type="text" class="form-control" rows="3" name="description" value="{{ $product->description }}"></textarea>
+                            <textarea type="text" class="form-control" rows="3" name="description">{{ $product->description }}</textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -99,11 +99,11 @@
                         </div>
                         <label class="font-weight-bolder">Meta Keywords </label>
                         <div class="input-group input-group-outline">
-                            <textarea type="text" class="form-control" rows="3" name="meta_keywords" value="{{ $product->meta_keywords }}"></textarea>
+                            <textarea type="text" class="form-control" rows="3" name="meta_keywords" >{{ $product->meta_keywords }}</textarea>
                         </div>
                         <label class="font-weight-bolder">Meta Description </label>
                         <div class="input-group input-group-outline">
-                            <textarea type="text" class="form-control" rows="3" name="meta_description" value="{{ $product->meta_description }}"></textarea>
+                            <textarea type="text" class="form-control" rows="3" name="meta_description">{{ $product->meta_description }}</textarea>
                         </div>
                         @if ($product->image)
                         <img src="{{asset('assets/uploads/product/'.$product->image)}}" alt="product image">

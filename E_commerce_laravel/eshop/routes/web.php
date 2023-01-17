@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front');
 });
-
+Route::get('/',[FrontendController::class,'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -35,7 +35,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('admin.index');
     // });
-    Route::get('/dashboard', [FrontendController::class,'index']);
+    Route::get('/dashboard', 'Admin\FrontendController@index');
     Route::get('/categories', [CategoryController::class,'index']);
     Route::get('/categories/create', [CategoryController::class,'create']);
     Route::post('/categories', [CategoryController::class,'store']);
@@ -46,7 +46,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/products',[ProductController::class,'index']);
     Route::get('/products/create',[ProductController::class,'create']);
     Route::post('/products',[ProductController::class,'store']);
-    Route::get('/products/{id}',[ProductController::class,'edit']);
+    Route::get('/products/{id}/edit',[ProductController::class,'edit']);
     Route::put('/products/{id}',[ProductController::class,'update']);
-    Route::delete('/products/{id}', [ProductController::class,'destroy']);
+    Route::get('/products/{id}', [ProductController::class,'destroy']);
 });

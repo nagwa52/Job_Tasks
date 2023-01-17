@@ -26,10 +26,10 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id
                                         </th>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Name</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -46,17 +46,17 @@
                                     @foreach ($category as $item)
                                         <tr>
                                             <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
+                                                <div class="text-center">
                                                         <h6 class="mb-0 text-sm"> {{ $item->id }}</h6>
-                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
+                                                <div class="text-center">
                                                 <h6 class="mb-0 text-sm"> {{ $item->name }}</h6>
+                                                </div>
                                             </td>
                                             <td>
-                                                <div class="px-2 py-1">
+                                                <div class="px-2 py-1 text-center">
                                                     @php
                                                         $outDescriprion = strlen($item->description) > 100 ? substr($item->description, 0, 80) . '...' : $item->description;
                                                     @endphp

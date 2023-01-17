@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->string('original_price');
             $table->string('selling_price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('qty');
             $table->string('tax');
             $table->tinyInteger('status')->default('0');
