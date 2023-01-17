@@ -17,6 +17,8 @@
     <!-- Material Icons -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -28,11 +30,14 @@
         @yield('content')
     </div>
     <!-- Scripts -->
+    <script src="{{ asset('frontend/js/jquery-3.6.3.min.js') }}" defer></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" defer></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if (session('status'))
         <script>
-            swal("{{ session('status') }}","","success")
+            swal("{{ session('status') }}", "", "success")
         </script>
     @endif
     @yield('scripts')

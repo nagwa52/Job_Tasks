@@ -9,18 +9,41 @@
     <div class="py-5">
         <div class="container">
             <div class="row">
-            @foreach ($trending_products as $product )
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="{{asset('assets/uploads/product/'.$product->image)}}" alt="product image">
-                        <div class="card-body">
-                            <h5>{{$product->name}}</h5>
-                            <small>{{$product->selling_price}}</small>
+                <div class="owl-carousel trending-carousel owl-theme">
+                    @foreach ($trending_products as $product)
+                        <div class="item">
+                            <div class="card">
+                                <img src="{{ asset('assets/uploads/product/' . $product->image) }}" alt="product image">
+                                <div class="card-body">
+                                    <h5>{{ $product->name }}</h5>
+                                    <small>{{ $product->selling_price }}</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                @endforeach
+
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('.trending-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    </script>
 @endsection
