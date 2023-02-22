@@ -23,30 +23,26 @@ app.get("/", (req, res) => {
 });
 
 
-db.sequelize.sync({force: false}).then(() => {
+db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Db');
-  // initial();
+  initial();
 });
 
-// function initial() {
-//   Role.create({
-//     id: 1,
-//     name: "employee"
-//   });
+function initial() {
+  Role.create({
+    id: 1,
+    name: "employee"
+  });
  
-//   Role.create({
-//     id: 2,
-//     name: "moderator"
-//   });
- 
-//   Role.create({
-//     id: 3,
-//     name: "admin"
-//   });
-// }
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/table.routes')(app);
+require('./app/routes/reservation.routes')(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
