@@ -13,14 +13,13 @@ module.exports = function (app) {
     [authJwt.verifyToken,authJwt.isAdmin],
     reservationController.getAllHandler
   );
-  // app.post(
-  //   "/api/tables/add",
-  //   [authJwt.verifyToken,authJwt.isAdmin,verifyTables.checkDuplicateTableNumber],
-  //   controller.addTable
-  // );
-  // app.delete(
-  //   "/api/tables/delete/:id",
-  //   [authJwt.verifyToken,authJwt.isAdmin],
-  //   controller.deleteTable
-  // );
+  app.post(
+    "/api/reservations/register",
+    [authJwt.verifyToken,authJwt.isAdmin],
+    reservationController.registerHandler
+  );
+  app.post("/api/reservations/choose-table/:reservationId", 
+  [authJwt.verifyToken,authJwt.isAdmin],
+  reservationController.chooseTableHandler
+);
 };

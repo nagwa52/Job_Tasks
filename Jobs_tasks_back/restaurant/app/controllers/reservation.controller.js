@@ -15,6 +15,7 @@ const getAllHandler = async (req, res) => {
 
 const registerHandler = async (req, res) => {
   const payload = req.body;
+  console.log('payload',payload)
   await reservationService.registerReservation(reservationDAO, payload);
 
   return res.status(201).json({
@@ -53,28 +54,28 @@ const cancelHandler = async (req, res) => {
   });
 };
 
-// const chooseTableHandler = async (req, res) => {
-//   const reservationId = req.params.reservationId;
-//   const { tableId } = req.body;
+const chooseTableHandler = async (req, res) => {
+  const reservationId = req.params.reservationId;
+  const { tableId } = req.body;
 
-//   const info = await reservationService.chooseTable(
-//     reservationId,
-//     tableId,
-//     reservationDAO,
-//     tableDAO
-//   );
+  const info = await reservationService.chooseTable(
+    reservationId,
+    tableId,
+    reservationDAO,
+    tableDAO
+  );
 
-//   return res.status(200).json({
-//     success: true,
-//     message: "Successfully chosen your table!",
-//     item: info,
-//   });
-// };
+  return res.status(200).json({
+    success: true,
+    message: "Successfully chosen your table!",
+    item: info,
+  });
+};
 
 module.exports = {
   getAllHandler,
   registerHandler,
   // editHandler,
   cancelHandler,
-  // chooseTableHandler,
+  chooseTableHandler,
 };

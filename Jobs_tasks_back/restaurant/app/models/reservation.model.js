@@ -1,11 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
     const Reservation = sequelize.define("reservations", {
-      id:{
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
-    },
     resDate: {
       type: Sequelize.DATEONLY,
       allowNull: false,
@@ -31,6 +25,15 @@ module.exports = (sequelize, Sequelize) => {
           msg: "Maximum 12 people per reservation!",
         },
       },
+    },
+    tableId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: "tables",
+        key: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     },
     })
     return Reservation;

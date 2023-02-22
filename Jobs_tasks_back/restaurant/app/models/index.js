@@ -29,19 +29,10 @@ db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.table = require("../models/table.model.js")(sequelize, Sequelize);
 db.reservation = require("../models/reservation.model.js")(sequelize, Sequelize);
 
-// db.role.hasOne(db.user);
 db.user.belongsTo(db.role, {
   foreignKey: 'RoleId'
 });
-db.table.belongsTo(db.reservation, {
-  onUpdate: "cascade",
-  hooks: true,
-});
-db.reservation.hasMany(db.table, {
-  onUpdate: "cascade",
-  hooks: true,
-});
 
-db.ROLES = ["employee", "admin", "moderator"];
+db.ROLES = ["employee", "admin"];
 
 module.exports = db;

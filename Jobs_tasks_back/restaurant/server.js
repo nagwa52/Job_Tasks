@@ -6,7 +6,7 @@ const app = express();
 const db = require("./app/models");
 const Role = db.role;
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -22,27 +22,26 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to restaurant application." });
 });
 
-
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and Resync Db");
   initial();
 });
 
 function initial() {
   Role.create({
     id: 1,
-    name: "employee"
+    name: "admin",
   });
- 
+
   Role.create({
-    id: 3,
-    name: "admin"
+    id: 2,
+    name: "employee",
   });
 }
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
-require('./app/routes/table.routes')(app);
-require('./app/routes/reservation.routes')(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
+require("./app/routes/table.routes")(app);
+require("./app/routes/reservation.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

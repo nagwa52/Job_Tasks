@@ -51,19 +51,24 @@ const deleteReservation = async (reservation) => {
   return await reservation.destroy();
 };
 
-const setReservationTable = async (reservationId, tableId) => {
-  await Table.update(
-    {
-      isOccupied: true,
-      reservationId: reservationId,
+let rows = await Table.findAll({
+  where: {
+    NumberOfSeats:{
+      [Op.lt]:people
     },
-    {
-      where: {
-        id: tableId,
-      },
-    }
-  );
-};
+    resDate: null, resDate: null
+  },
+
+  include: [{
+      model: Reservation,
+      as: 'reservation',
+  }],
+  raw: true,
+  limit: 2
+      .orderBy('people', 'asc')
+}).catch(function (err) {
+  console.log(err);
+});
 
 module.exports = {
   findAllReservations,

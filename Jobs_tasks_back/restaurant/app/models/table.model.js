@@ -11,16 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
       allowNull: false,
-    },
-    reservationId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "reservations",
-        key: "id",
-      },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
-    },
+    }
   });
 
   return Table;

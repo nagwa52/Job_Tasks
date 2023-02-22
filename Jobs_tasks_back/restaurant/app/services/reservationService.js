@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Op } = require("sequelize");
 const config = require("../config/auth.config");
 const User = db.user;
 const Table = db.table;
@@ -6,20 +7,11 @@ const Reservation = db.reservation;
 
 const dateTimeValidator = require("../utils/DateAndTimeValidator");
 
-const retrieveReservation = (req,res,next) => {
-  Reservation.findAll()
-    .then(data => {
-      res.status(200).send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving reservations."
-      });
-    });
+const getAllReservations = async (reservationDAO) => {
+  return await reservationDAO.findAllReservations();
 };
-
 const validateTime = (currDate, resDate, resTime) => {
+  console.log(currDate)
   if (resDate === dateTimeValidator.asDateString(currDate)) {
     if (resTime < dateTimeValidator.asTimeString(currDate)) {
       throw {
@@ -44,48 +36,42 @@ const checkClosingOpeningTime = (resTime) => {
     };
   }
 };
-
+const findFreeTable = (startDate, endDate, people) => {
+  
+}
 const isFieldEmpty = (payload) => {
   if (
     !payload.resDate ||
     !payload.resTime||
     !payload.people
   ) {
-    throw {
-      status: 400,
-      message: "Please fill in all fields!",
-    };
+    console.log('error')
+    // throw {
+    //   status: 400,
+    //   message: "Please fill in all fields!",
+    // };
   }
 };
+const checkAvailableSeats =(payload)=>{
+if(payload.people > 12){
+      throw {
+      status: 500,
+      message:  `Oops, we can't serve ${payload.people} guests!`,
+    };
+}
+}
 
 const registerReservation = async (payload) => {
+
   isFieldEmpty(payload);
-  validateTime(new Date(), payload.resDate, payload.resTime);
+
+  // validateTime(new Date(), payload.resDate, payload.resTime);
+  checkAvailableSeats(payload.people)
   checkClosingOpeningTime(payload.resTime);
   return await (payload);
 };
 
-// const editReservation = async (reservationId, reservationDAO, payload) => {
-//   const reservation = await reservationDAO.findReservationById(reservationId);
-//   if (!reservation)
-//     throw {
-//       status: 404,
-//       message: "Reservation not found!",
-//     };
-//   validateTime(new Date(), payload.resDate, payload.resTime);
-//   checkClosingOpeningTime(payload.resTime);
-//   return await reservationDAO.updateReservation(reservationId, payload);
-// };
 
-// const cancelReservation = async (reservationId, reservationDAO) => {
-//   const reservation = await reservationDAO.findReservationById(reservationId);
-//   if (reservation) return await reservationDAO.deleteReservation(reservation);
-
-//   throw {
-//     status: 400,
-//     message: "Given reservation doesn't exist!",
-//   };
-// };
 
 const compareResDateToCurrDate = (resDate, currDate) => {
   return resDate > currDate ? 1 : resDate < currDate ? -1 : 0;
@@ -168,11 +154,9 @@ const chooseTable = async (
       message: "Reservation's party size is too big for this table!",
     };
 
-  return await reservationDAO.setReservationTable(reservationId, tableId);
+  // return await reservationDAO.setReservationTable(reservationId, tableId);
 };
-const deleteReservation = async (reservation) => {
-  return await reservation.destroy();
-};
+
 const cancelReservation = async (reservationId, reservationDAO) => {
   const reservation = await reservationDAO.findReservationById(reservationId);
   if (reservation) return await reservationDAO.deleteReservation(reservation);
@@ -183,7 +167,7 @@ const cancelReservation = async (reservationId, reservationDAO) => {
   };
 };
 module.exports = {
-  retrieveReservation,
+  getAllReservations,
   registerReservation,
   cancelReservation,
   chooseTable,
