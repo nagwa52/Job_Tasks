@@ -12,12 +12,8 @@ export class UsersDTO {
   name: string;
   @IsEmail()
   email: string;
-  // @IsString()
-  // state: string;
   @IsLongitude()
   longitude: number;
   @IsLatitude()
   latitude: number;
-  // @IsString()
-  // city: string;
 }

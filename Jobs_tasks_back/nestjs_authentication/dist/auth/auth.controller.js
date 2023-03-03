@@ -19,8 +19,12 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(req, res, body, param) {
+    async getUser(req, res, body, param) {
         const auth = await this.authService.getOneUser(param.id);
+        res.status(auth.status).json(auth.msg);
+    }
+    async getLocation(res, body) {
+        const auth = await this.authService.getAddress(body.latitude, body.longitude);
         res.status(auth.status).json(auth.msg);
     }
     async signup(req, res, body) {
@@ -29,7 +33,7 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
-    (0, common_1.Get)('/user/:id'),
+    (0, common_1.Get)("/user/:id"),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Res)()),
     __param(2, (0, common_1.Body)()),
@@ -37,9 +41,17 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object, Object]),
     __metadata("design:returntype", Promise)
-], AuthController.prototype, "login", null);
+], AuthController.prototype, "getUser", null);
 __decorate([
-    (0, common_1.Post)('/user/signup'),
+    (0, common_1.Post)("/location"),
+    __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getLocation", null);
+__decorate([
+    (0, common_1.Post)("/user/signup"),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Res)()),
     __param(2, (0, common_1.Body)()),
@@ -48,7 +60,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signup", null);
 AuthController = __decorate([
-    (0, common_1.Controller)('auth'),
+    (0, common_1.Controller)("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;

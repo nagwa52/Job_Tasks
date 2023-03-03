@@ -4,6 +4,7 @@ import configuration from './config/configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './database/entities/users.entity';
 import { AuthModule } from './auth/auth.module';
+// import { FetchModule} from 'nestjs-fetch';
 
 @Module({
   imports: [
@@ -16,13 +17,13 @@ import { AuthModule } from './auth/auth.module';
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         url: configService.get('database.uri'),
-        password:configService.get('12345'),
         entities: [Users],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     AuthModule,
+    // FetchModule,
   ],
   controllers: [],
   providers: [],

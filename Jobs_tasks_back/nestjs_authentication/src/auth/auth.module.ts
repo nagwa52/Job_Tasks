@@ -8,11 +8,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from '../database/entities/users.entity';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     PassportModule,
     LoggerModule,
+    // HttpService,
+    HttpModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {

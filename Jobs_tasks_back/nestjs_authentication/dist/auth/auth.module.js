@@ -17,6 +17,7 @@ const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const users_entity_1 = require("../database/entities/users.entity");
+const axios_1 = require("@nestjs/axios");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -24,6 +25,7 @@ AuthModule = __decorate([
         imports: [
             passport_1.PassportModule,
             logger_module_1.LoggerModule,
+            axios_1.HttpModule,
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 useFactory: (configService) => {

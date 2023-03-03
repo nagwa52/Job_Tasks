@@ -27,7 +27,6 @@ AppModule = __decorate([
                 useFactory: (configService) => ({
                     type: 'postgres',
                     url: configService.get('database.uri'),
-                    password: configService.get('12345'),
                     entities: [users_entity_1.Users],
                     synchronize: true,
                 }),
